@@ -1,0 +1,89 @@
+    {% extends "base.html" %}
+
+    {% block titulo %}
+    Productos
+    {% endblock titulo %}
+
+    {% block menu %}
+{% endblock menu %}
+    {% block contenido %}
+    <div class="btn-group">
+        {% if user.is_staff %}
+  <a class="btn btn-sm btn-outline-secondary"href="{% url 'catalogo' %}">Volver</a>
+{% endif %}
+    <a href="{% url 'principal' %}">
+        <button type="button" class="btn btn-sm btn-outline-secondary">volver</button>
+        </a>
+    </div>
+    <div class="container mt-5" style="max-width: 800px;">
+        <div class="border rounded shadow-lg py-4">
+        <div class="container pt-3">
+            <div class="row">
+            <div class="col-8">
+                <h3 class="">RESERVAS </h3>
+            </div>
+            <div class="col-4 text-right">
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'rproductoAdd' %}">Reservar Producto</a>
+            </div>
+            </div>
+            <div class="row mt-3">
+            <div class="col-6">
+                <h5 class="">Todos</h5>
+            </div>
+            <div class="col-6 text-right">
+                <form method="post" class="form-inline justify-content-end">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input class="form-control" name="buscar" placeholder="Buscar Producto">
+                    <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+            </div>
+            <hr>
+            <!-- Línea divisoria superior -->
+            <hr>
+            <div class="row">
+            <div class="col">
+                <div class="table-responsive">
+                <table class="table table-striped table-hover" style="max-width: 100%;">
+                    <!-- Aquí va el contenido de la tabla -->
+                    <thead>
+                    <tr>
+                        <th style="background-color: lightblue;">N°</th>
+                        <th style="background-color: lightblue;">Nombre</th>
+                        <th style="background-color: lightblue;">Cantidad Kg</th>
+                        <th style="background-color: lightblue;">Foto</th>
+                        <th style="background-color: lightblue;" class="text-center">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Reemplaza este ciclo for con la estructura de tus datos de productos -->
+                    {% for rproducto in rproductos %}
+                    <tr>
+                        <td>{{ rproducto.numProducto }}</td>
+                        <td>{{ rproducto.nombreProducto }}</td>
+                        <td>{{ rproducto.cantidad }}</td>
+                        <td>
+                        {% if rproducto.foto %}
+                            <img src="{{ rproducto.foto.url }}" alt="foto del producto" width="50" height="auto">
+                        {% endif %}    
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-warning btn-sm" href="{% url 'reditarProducto' rproducto.numProducto %}">Modificar</a>
+                            <a class="btn btn-danger btn-sm" href="{% url 'reliminarProducto' rproducto.numProducto %}">Eliminar</a>
+                            <a class="btn btn-info btn-sm" href="{% url 'generar_pdf' rproducto.numProducto %}" target="_blank"> Baucher</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endblock contenido %}

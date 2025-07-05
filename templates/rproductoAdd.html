@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}
+    Agregar Reserva
+{% endblock titulo %}
+{% block menu %}
+{% endblock menu %}
+
+{% block contenido %}
+<div class="container shadow-lg p-4 mt-5" style="max-width: 600px; border-radius: 20px;">
+    <h2 class="text-center mb-4">Añadir Reserva</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="id_nombreProducto">Nombre Producto:</label>
+                    {{ form.nombreProducto }}
+                    {{ form.nombreProducto.errors }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.cantidad.label_tag }}
+                    {{ form.cantidad }}
+                    {{ form.cantidad.errors }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_cantidadMinima">Cantidad Mínima:</label>
+                    {{ form.cantidadMinima }}
+                    {{ form.cantidadMinima.errors }}
+                </div>
+
+                
+
+                <div class="mb-3">
+                    {{ form.descripcion.label_tag }}
+                    {{ form.descripcion }}
+                    {{ form.descripcion.errors }}
+                </div>
+            </div>
+
+            <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
+                <div class="text-center mb-3">
+                    <img id="imagenPrevia" src="{% static 'img/placeholder.png' %}" alt=""
+                        width="150" height="auto" class="mx-auto my-auto d-block">
+                </div>
+
+                <div class="text-center">
+                    <label for="foto">Añadir Imagen</label>
+                </div>
+
+                <div class="text-center">
+                    <input type="file" name="foto" id="foto" class="form-control form-control-sm" onchange="previsualizarImagen(event)">
+                </div>
+            </div>
+
+            <div class="col-lg-12 mt-4">
+                <a class="btn btn-dark" href="{% url 'rproductos' %}">Volver</a>
+                <div class="text-center"><button class="btn btn-primary" type="submit">Ingresar Producto</button></div>
+                
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    function previsualizarImagen(event) {
+        const archivo = event.target.files[0];
+        const lector = new FileReader();
+
+        lector.onload = function(e) {
+            document.getElementById('imagenPrevia').src = e.target.result;
+        };
+
+        lector.readAsDataURL(archivo);
+    }
+</script>
+{% endblock contenido %}

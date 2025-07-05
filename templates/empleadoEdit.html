@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block menu %}
+{% endblock menu %}
+{% block contenido %}
+{% load static %}
+<div class="container shadow-lg p-4 pt-5" style="max-width: 600px; border-radius: 20px;">
+    <h2 class="text-center mb-4">Modificar Empleado</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-3 mb-3">
+                {{ form.run.label_tag }}
+                {{ form.run }}
+                {{ form.run.errors }}
+            </div>
+            <div class="col-3 mb-3">
+                {{ form.nombre.label_tag }}
+                {{ form.nombre }}
+                {{ form.nombre.errors }}
+            </div>
+            <div class="col-3 mb-3">
+                {{ form.paterno.label_tag }}
+                {{ form.paterno }}
+                {{ form.paterno.errors }}
+            </div>
+            <div class="col-3 mb-3">
+                {{ form.materno.label_tag }}
+                {{ form.materno }}
+                {{ form.materno.errors }}
+            </div>
+            <div class="col-3 mb-3">
+                {{ form.sexo.label_tag }}
+                {{ form.sexo }}
+                {{ form.sexo.errors }}
+            </div>
+            <div class="col-3 mb-3">
+                {{ form.codigoEmpleado.label_tag }}
+                {{ form.codigoEmpleado }}
+                {{ form.codigoEmpleado.errors }}
+            </div>
+
+            <div class="col-3 mb-3">
+                {{ form.sueldo.label_tag }}
+                {{ form.sueldo }}
+                {{ form.sueldo.errors }}
+            </div>
+            <div class="col-3 mb-3">
+                {{ form.fechaNac.label_tag }}
+                {{ form.fechaNac }}
+                {{ form.fechaNac.errors }}
+            </div>
+            <div class="col-3 mb-3">
+                {{ form.cargo.label_tag }}
+                {{ form.cargo }}
+                {{ form.cargo.errors }}
+            </div>
+            <div class="col-3 mb-3">
+                {{ form.departamento.label_tag }}
+                {{ form.departamento }}
+                {{ form.departamento.errors }}
+            </div>
+                </div>
+
+                <div class="text-center">
+                    <label for="foto">Imagen del Producto:</label>
+                </div>
+
+                <div class="text-center">
+                    <input type="file" name="foto" id="foto" class="form-control form-control-sm" onchange="previsualizarImagen(event)">
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 ">
+            <a class="btn btn-dark" href="{% url 'empleados' %}">Volver</a>
+            <div class="text-center"><button class="btn btn-primary col-3" type="submit">Guardar</button></div>
+        </div>
+    </form>
+</div>
+
+<script>
+    function previsualizarImagen(event) {
+        const archivo = event.target.files[0];
+        const lector = new FileReader();
+
+        lector.onload = function(e) {
+            document.querySelector('.mx-auto.my-auto.d-block').src = e.target.result;
+        };
+
+        lector.readAsDataURL(archivo);
+    }
+</script>
+{% endblock contenido %}

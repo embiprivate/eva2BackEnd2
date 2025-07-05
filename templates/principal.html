@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block menu %}
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'inicio' %}">MyProyecto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Usuario: <b>{{ user.first_name }} {{ user.last_name }}</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}"><b>Cerrar Sesión</b></a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}"><b>Iniciar Sesión</b></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+            <a href="{% url 'inicio' %}" class="navbar-brand d-flex align-items-center">
+                <img src="{% static 'img/logo.jpg' %}" width="50" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                <strong>Panadería M&A</strong>
+    
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <div class="btn-group">
+                            <a href="{% url 'catalogo' %}">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">ADMIN</button>
+                            </a>
+                        </div>
+                    {% endif %}
+                    <div class="btn-group">
+                        <a href="{% url 'productos' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">PRODUCTOS</button>
+                        </a>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="{% url 'rproductos' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">MIS RESERVAS</button>
+                        </a>
+                    </div>
+                {% endif %}
+            </a>
+        </div>
+    </div>
+        </header>
+
+        <main role="main">
+            <section class="jumbotron text-center">
+                <div class="container">
+                    <h1 class="jumbotron-heading">Catálogo de Panadería</h1>
+                    <p class="lead text-muted">Catálogo de Panadería, Variedades de Panes, Dulces, Acompañamientos.</p>
+                </div>
+            </section>
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top" src="{% static 'img/paness.jpg' %}" alt="imagen1"> 
+                                <div class="card-body">
+                                    <p class="card-text">PANES</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="{% url 'panes' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver Productos</button>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="{% static 'img/deshi.jpg' %}" alt="imagen1"> 
+                    <div class="card-body">
+                    <p class="card-text">DESHIDRATADOS</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                        <a href="{% url 'deshidratado' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver Productos</button>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="{% static 'img/mermelada.jpg' %}" alt="imagen1"> 
+                    <div class="card-body">
+                    <p class="card-text">MERMELADAS Y MIELES</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{% url 'mermeladasymieles' %}">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Ver productos</button>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="{% static 'img/pasteles.jpg' %}" alt="imagen1"> 
+                    <div class="card-body">
+                    <p class="card-text">PASTELES</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                        <a href="{% url 'pasteles' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver productos</button>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-4" >
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="{% static 'img/tartas.jpg' %}" alt="imagen1"> 
+                    <div class="card-body">
+                    <p class="card-text">TARTALETAS</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                        <a href="{% url 'tartaletas' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver Productos</button>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-4">
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" src="{% static 'img/embutidoss.jpg' %}" alt="imagen1"> 
+                    <div class="card-body">
+                    <p class="card-text">EMBUTIDOS Y LACTEOS</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                        <a href="{% url 'embutidosylacteos' %}">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver Productos</button>
+                        </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </main>
+        <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+            <a href="#">Volver Arriba</a>
+            </p>
+            <p>Catalogo &copy; Panaderia M&A</p>
+        </div>
+        </footer>
+
+        
+{% endblock menu %}

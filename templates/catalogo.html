@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block menu %}
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'inicio' %}">MyProyecto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'principal' %}">catalogo</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Usuario: <b>{{ user.first_name }} {{ user.last_name }}</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}"><b>Cerrar Sesión</b></a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}"><b>Iniciar Sesión</b></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Contenido Principal -->
+<div class="container mt-5">
+    <!-- Aquí puedes agregar imágenes referentes -->
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{% static 'img/productos_image.jpg' %}" alt="Productos" class="img-fluid custom-img-size">
+            <p class="text-center mt-3"><a href="{% url 'productos' %}" class="btn btn-primary">Ver Productos</a></p>
+        </div>
+        <div class="col-md-4">
+            <img src="{% static 'img/empleados_image.jpg' %}" alt="Empleados" class="img-fluid custom-img-size">
+            <p class="text-center mt-3"><a href="{% url 'empleados' %}" class="btn btn-primary">Ver Empleados</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <img src="{% static 'img/clientes_images.jpg' %}" alt="Clientes" class="img-fluid custom-img-size">
+            <p class="text-center mt-3"><a href="{% url 'usuarios' %}" class="btn btn-primary">Ver Clientes</a></p>
+        </div>
+        <!-- Agrega más secciones según sea necesario -->
+    </div>
+</div>
+
+<style>
+    /* Establecer el mismo tamaño para ambas imágenes */
+    .custom-img-size {
+        width: 30%; /* Puedes ajustar este valor según tus necesidades */
+        height: auto;
+    }
+</style>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+
+</html>
+{% endblock menu %}

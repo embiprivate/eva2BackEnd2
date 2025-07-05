@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+Creador de Empleados
+{% endblock titulo %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block contenido %}
+<style>
+    .custom-container {
+        margin-top: 2rem;
+        background-color: #; /* Color de fondo */
+        border: 1px solid #d1d3; /* Borde */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 1.5rem; /* Espaciado interno */
+        max-width: 800px; /* Ancho máximo del contenedor */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .custom-title {
+        font-family: 'Arial', sans-serif; /* Cambia 'Arial' por la fuente que desees */
+        color: #; /* Color del título */
+        font-size: 24px; /* Tamaño del título */
+        margin-bottom: 15px; /* Espaciado inferior */
+    }
+
+    .custom-form-label {
+        font-weight: bold; /* Texto en negrita */
+    }
+
+    .custom-btn {
+        margin-top: 15px; /* Espaciado superior del botón */
+    }
+</style>
+
+<div class="container mt-5 custom-container">
+    <div class="row">
+        <div class="col-8">
+            <div class="row">
+                <div class="col h2 text-primary custom-title">Añadir Empleado</div>
+            </div>
+            <form method="post" action="{% url 'empleadoAdd' %}" enctype="multipart/form-data">
+
+                {% csrf_token %}
+                <div class="row">
+                    {{  form.non_file_errors }}
+                    
+                    <div class="col-3 mb-3">
+                        <label for="{{ form.run.id_for_label }}" class="custom-form-label">RUN</label>
+                        {{ form.run }}
+                        {{ form.run.errors }}
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="{{ form.nombre.id_for_label }}" class="custom-form-label">Nombre</label>
+                        {{ form.nombre }}
+                        {{ form.nombre.errors }}
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="{{ form.paterno.id_for_label }}" class="custom-form-label">Apellido Paterno</label>
+                        {{ form.paterno }}
+                        {{ form.paterno.errors }}
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="{{ form.materno.id_for_label }}" class="custom-form-label">Apellido Materno</label>
+                        {{ form.materno }}
+                        {{ form.materno.errors }}
+                    </div>
+
+                    
+                    <div class="col-4 mb-3">
+                        <label for="{{ form.codigoEmpleado.id_for_label }}" class="custom-form-label">Código Empleado</label>
+                        {{ form.codigoEmpleado }}
+                        {{ form.codigoEmpleado.errors }}
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="{{ form.sexo.id_for_label }}" class="custom-form-label">Sexo</label>
+                        {{ form.sexo }}
+                        {{ form.sexo.errors }}
+                    </div>
+
+                    
+                    <div class="col-4 mb-3">
+                        <label for="{{ form.sueldo.id_for_label }}" class="custom-form-label">Sueldo</label>
+                        {{ form.sueldo }}
+                        {{ form.sueldo.errors }}
+                    </div>
+                    <div class="col-4 mb-3">
+                        <label for="{{ form.fechaNac.id_for_label }}" class="custom-form-label">Fecha de Nacimiento</label>
+                        {{ form.fechaNac }}
+                        {{ form.fechaNac.errors }}
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="{{ form.cargo.id_for_label }}" class="custom-form-label">Cargo</label>
+                        {{ form.cargo }}
+                        {{ form.cargo.errors }}
+                    </div>
+                    <div class="col-5 mb-3">
+                        <label for="{{ form.departamento.id_for_label }}" class="custom-form-label">Departamento</label>
+                        {{ form.departamento }}
+                        {{ form.departamento.errors }}
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-6">
+                        <a class="btn btn-dark custom-btn" href="{% url 'empleados' %}">Volver</a>
+                    </div>
+                    <div class="col-9">
+                        <button class="btn btn-dark custom-btn" type="submit">Guardar Empleado</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-4">
+            <img src="{% static 'img/usuario.png' %}" width="250" height="auto" alt="foto del usuario">
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

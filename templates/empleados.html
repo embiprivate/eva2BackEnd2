@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    Mantenedor de Empleados
+{% endblock titulo %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block contenido %}
+<style>
+    .custom-container {
+        margin-top: 2rem;
+        background-color: #; /* Color de fondo */
+        border: 1px solid #d1d3; /* Borde */
+        border-radius: 10px; /* Bordes redondeados */
+        padding: 1.5rem; /* Espaciado interno */
+        max-width: 800px; /* Ancho máximo del contenedor */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .custom-title {
+      font-family: 'Arial', sans-serif; /* Cambia 'Arial' por la fuente que desees */
+      color: #black; /* Color del título */
+      font-size: 24px; /* Tamaño del título */
+      margin-bottom: 15px; /* Espaciado inferior */
+  }
+
+  .custom-table {
+      background-color: #d1d3; /* Fondo de la tabla */
+      border: 1px solid #d1d3; /* Borde de la tabla */
+  }
+
+  .custom-btn {
+      font-size: 14px; /* Tamaño del texto del botón */
+      margin-top: 10px; /* Espaciado superior del botón */
+    }
+</style>
+
+<div class="container mt-4 custom-container">
+  <a href="{% url 'catalogo' %}">
+    <button type="button" class="btn btn-sm btn-outline-secondary">volver</button>
+    </a>
+    <div class="row">
+        <div class="col">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="custom-title">Listado de Empleados</h2>
+                <a href="{% url 'crearEmpleado' %}" class="btn btn-sm btn-outline-secondary">Agregar Empleado</a>
+            </div>
+            <table class="table table-hover table-striped table-light">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>RUN</th>
+                        <th>Nombre Empleado</th>
+                        <th>Cargo</th>
+                        <th>Departamento</th>
+                        <th>Sueldo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in empleados %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ empleado.run }}</td>
+                            <td>{{ empleado.nombre }} {{ empleado.paterno }} {{ empleado.materno }}</td>
+                            <td>{{ empleado.cargo }}</td>
+                            <td>{{ empleado.departamento }}</td>
+                            <td>{{ empleado.sueldo }}</td>
+                            <td>
+                                <a href="{% url 'empleadoEditado' empleado.id %}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> </a>
+                                <a href="{% url 'eliminarEmpleado' empleado.id %}" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i> </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
+
+
+

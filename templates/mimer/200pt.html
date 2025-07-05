@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mermelada de Frutilla | M&A</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/logo.jpg' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'js/bootstrap.bundle.min.js' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="{% url 'inicio' %}" class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'img/logo.jpg' %}" width="50" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></img>
+            <strong>Panaderia M&A</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+    <a class="btn btn-outline-dark" href="{% url 'mermeladasymieles' %}" role="button">Volver</a>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{% static 'img/fruta.jpg' %}" alt="Imagen1" width="400" height="300">
+        </div>
+        <div class="col-md-6">
+          <h1 style="margin-left: 20px; font-family: Verdana; font-weight: 800;">Detalles Nutricionales</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Tipo</th>
+          <th scope="col">Calorías</th>
+          <th scope="col">Grasa</th>
+          <th scope="col">Carbh</th>
+          <th scope="col">Prot.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{ tipo }}</th>
+          <td>{{ calorias }}</td>
+          <td>{{ grasa }}</td>
+          <td>{{ carbh }}</td>
+          <td>{{ prot }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <footer class="text-muted fixed-bottom">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Volver Arriba</a>
+        </p>
+        <p>Catalogo &copy; Panaderia M&A</p>
+      </div>
+    </footer>
+    
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

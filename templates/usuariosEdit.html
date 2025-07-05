@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+    
+{% endblock titulo %}
+
+{% block menu %}
+{% endblock menu %}
+{% block contenido %}
+    <tbody>
+        <div class="row mt-5">
+            <div class="col-10 offset-1">
+                <h2>Modificar Usuario</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-3 mb-3">
+                            {{ form.run.label_tag }}
+                            {{ form.run }}
+                            {{ form.run.errors }}
+                        </div>
+                        <div class="col-3 mb-3">
+                            {{ form.nombres.label_tag }}
+                            {{ form.nombres }}
+                            {{ form.nombres.errors }}
+                        </div>
+                        <div class="col-3 mb-3">
+                            {{ form.apellidos.label_tag }}
+                            {{ form.apellidos }}
+                            {{ form.apellidos.errors }}
+                        </div>
+                        <div class="col-3 mb-3">
+                            {{ form.sexo.label_tag }}
+                            {{ form.sexo }}
+                            {{ form.sexo.errors }}
+                        </div>
+                        <div class="col-3 mb-3">
+                            {{ form.fechaNac.label_tag }}
+                            {{ form.fechaNac }}
+                            {{ form.fechaNac.errors }}
+                        </div>
+                        <div class="col-3 mb-3">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
+                        <div class="col-3 mb-3">
+                            {{ form.gabinete.label_tag }}
+                            {{ form.gabinete }}
+                            {{ form.gabinete.errors }}
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <a class="btn btn-dark" href="{% url 'usuarios' %}" >Lista de Usuarios </a>
+                        </div>
+
+                        <div class="col-6">
+                            <button class="btn btn-success"  type="submit">Modificar</button>
+                        </div>
+                        
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </tbody>
+{% endblock contenido %}
+

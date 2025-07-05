@@ -1,0 +1,20 @@
+    {% extends "base.html" %}
+
+    {% block contenido %}
+    <div class="container">
+        <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h3 class="text-center mb-4">Confirmar Eliminación del Producto</h3>
+            <div class="alert alert-danger text-center">
+                ¿Estás seguro que deseas eliminar el producto: 
+                {{ empleado.nombre }} {{ empleado.paterno }} {{ empleado.materno }}?
+            </div>
+            <form method="post" class="text-center mt-4">
+                {% csrf_token %}
+                <a class="btn btn-dark mr-2" href="{% url 'empleados' %}">Cancelar</a>
+                <button class="btn btn-danger" type="submit">Confirmar Eliminación</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    {% endblock contenido %}

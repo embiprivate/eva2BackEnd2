@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    Mantenedor de Usuarios
+{% endblock titulo %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block contenido %}
+<style>
+    .custom-container {
+        margin-top: 2rem;
+        background-color: #; /* Color de fondo */
+        border: 1px solid #d1d3; /* Borde */
+        border-radius: 15px; /* Bordes redondeados */
+        padding: 1.5rem; /* Espaciado interno */
+        max-width: 850px; /* Ancho máximo del contenedor */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .custom-title {
+        font-family: 'Arial', sans-serif; /* Cambia 'Arial' por la fuente que desees */
+        color: #black; /* Color del título */
+        font-size: 24px; /* Tamaño del título */
+        margin-bottom: 15px; /* Espaciado inferior */
+    }
+
+    .custom-table {
+        background-color: #; /* Fondo de la tabla */
+        border: 1px solid #d1d3; /* Borde de la tabla */
+    }
+
+    .custom-btn {
+        font-size: 14px; /* Tamaño del texto del botón */
+        margin-top: 10px; /* Espaciado superior del botón */
+    }
+</style>
+
+<div class="container mt-4 custom-container">
+    <a href="{% url 'catalogo' %}">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Volver</button>
+    </a>
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-9">
+                    <h2 class="custom-title">Listado de Usuarios</h2>
+                </div>
+                <div class="col-2">
+                    <a class="btn btn-sm btn-outline-secondary custom-btn" href="{% url 'usuariosAdd' %}">Agregar</a>
+                </div>
+            </div>              
+            <table class="table table-striped table-hover custom-table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>RUN</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Sexo</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>E-mail</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ usuario.run }}</td>
+                            <td>{{ usuario.nombres }}</td>
+                            <td>{{ usuario.apellidos }}</td>
+                            <td>{{ usuario.sexo }}</td>
+                            <td>{{ usuario.fechaNac }}</td>
+                            <td>{{ usuario.email }}</td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="{% url 'usuarioEditado' usuario.id %}"><i class="bi bi-pencil-square"></i> </a>
+                                <a class="btn btn-danger btn-sm" href="{% url 'eliminarUsuario' usuario.id %}"><i class="bi bi-trash-fill"></i> </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}

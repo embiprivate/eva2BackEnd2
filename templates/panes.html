@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block menu %}
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'inicio' %}">MyProyecto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Usuario: <b>{{ user.first_name }} {{ user.last_name }}</b></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}"><b>Cerrar Sesión</b></a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}"><b>Iniciar Sesión</b></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="{% url 'inicio' %}" class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'img/logo.jpg' %}" width="50" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></img>
+            <strong>Panaderia M&A</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Catálogo Panes</h1>
+      </div>
+      <div class="btn-group">
+          <a href="{% url 'principal' %}">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Inicio</button>
+          </a>
+        </div>
+    </section>
+    <main role="main">
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'img/amasadoo.jpg' %}" alt="imagen1"> 
+                <div class="card-body">
+                  <p class="card-text">PAN AMASADO</p>
+                  
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url '61' %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'img/hallullaaa.jpg' %}" alt="imagen1"> 
+                <div class="card-body">
+                  <p class="card-text">PAN HALLULLA</p>
+                  
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url '435' %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'img/panblancoo.jpg' %}" alt="imagen1"> 
+                <div class="card-body">
+                  <p class="card-text">PAN BLANCO</p>
+                 
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url '445-e-series' %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'img/aa.jpg' %}" alt="imagen1"> 
+                <div class="card-body">
+                  <p class="card-text">PAN ROLLO</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url '445ii' %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'img/panmarraqueta.jpg' %}" alt="imagen1"> 
+                <div class="card-body">
+                  <p class="card-text">PAN MARRAQUETA</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url '120' %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{% static 'img/panbaguette.jpg' %}" alt="imagen1"> 
+                <div class="card-body">
+                  <p class="card-text">Pan Baguette</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url '3120xp' %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Detalles</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Volver Arriba</a>
+        </p>
+        <p>Catalogo &copy; Panaderia M&A</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+  </body>
+</html>
+{% endblock menu %}
